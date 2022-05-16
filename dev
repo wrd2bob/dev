@@ -2916,7 +2916,7 @@
         
         
         AddCommand(function(Arguments)
-            notif("Loaded",".aim playername to start\n.stop to stop duh",5,nil)
+            notif("Loaded","/e aim playername to start\n/e stop to stop duh",5,nil)
             local following = false
             function psearch(arg)
                 for i,v in pairs(game.Players:GetPlayers()) do 
@@ -2925,47 +2925,12 @@
                     end
                 end
             end
-            local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-            for i,v in pairs(character:GetChildren()) do 
-                v.ChildAdded:Connect(function(s)
-                    if s.Name == "creator" then
-                        local enemy = workspace:FindFirstChild(s.Value.Name)
-                        local enemyroot = enemy.Head
-                        following = true
-                        repeat
-                            if game.Players.LocalPlayer.Backpack:FindFirstChild('Shotty') then game.Players.LocalPlayer.Backpack.Shotty.Parent = game.Players.LocalPlayer.Character end
-                            if game.Players.LocalPlayer.Backpack:FindFirstChild('Uzi') then game.Players.LocalPlayer.Backpack.Uzi.Parent = game.Players.LocalPlayer.Character end
-                            if game.Players.LocalPlayer.Backpack:FindFirstChild('Glock') then game.Players.LocalPlayer.Backpack.Glock.Parent = game.Players.LocalPlayer.Character end
-                            if game.Players.LocalPlayer.Character:FindFirstChild("Shotty") then game.Players.LocalPlayer.Character.Shotty.Shoot:FireServer(enemyroot.CFrame) end
-                            if game.Players.LocalPlayer.Character:FindFirstChild("Glock") then game.Players.LocalPlayer.Character.Glock.Shoot:FireServer(enemyroot.CFrame) end
-                            if game.Players.LocalPlayer.Character:FindFirstChild("Uzi") then game.Players.LocalPlayer.Character.Uzi.Shoot:FireServer(enemyroot.CFrame) end
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(13,0,-3)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(4,0,-2)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(-4,0,2)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(6,0,3)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(-6,0,-6)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(-4,0,-2)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(8,0,-2)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(-6,0,-3)
-                            wait()
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace[s.Value.Name].HumanoidRootPart.CFrame + Vector3.new(-6,0,2)
-                        until enemy.Humanoid.Health == 0 or enemy:FindFirstChild("KO") or game.Players.LocalPlayer.Character.Humanoid.Health == 0 or following == false
-                    end
-                end)
-            end
             
             game.Players.LocalPlayer.Chatted:Connect(function(msg)
-                if string.lower(msg) == ".stop" then 
+                if string.lower(msg) == "/e stop" then 
                     following = false
                 else
-                    if msg:sub(1,5) == ".aim " then 
+                    if msg:sub(1,5) == "/e aim " then 
                         local target = psearch(msg:sub(6))
                         if target then 
                             following = true
