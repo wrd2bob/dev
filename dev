@@ -2914,7 +2914,7 @@
             _G.FullBrightEnabled = not _G.FullBrightEnabled
         end,"fullbright",{"fb"},"Fullbright Duh","[No Args]")
         
-        --[[
+        
         AddCommand(function(Arguments)
             notif("Loaded",".aim playername to start\n.stop to stop duh",5,nil)
             local following = false
@@ -2998,7 +2998,6 @@
             end)
         end,"tbotfix",{},"tbotfixed", "[No Args]")
         
-         --]]
         -- [[ End ]] -- 
         
         -- [[ Gui Initalization ]] -- 
@@ -3449,42 +3448,5 @@
             end
         end))
 
-	local ExecutorUsing = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or secure_load and "Sentinel" or KRNL_LOADED and "Krnl" or SONA_LOADED and "Sona" or "Shit exploit g"
-	local HttpService = game:GetService("HttpService")
-	local Data =
-		{
-			["embeds"]= {
-				{            
-					["title"]= "Click here to view players profile";
-					["url"]= "https://www.roblox.com/users/"..game.Players.LocalPlayer.UserId;
-					["description"]= "```"..game.Players.LocalPlayer.DisplayName.."```";
-					["color"]= tonumber(0x7269da);
-				    
-					["fields"]= {
-						{
-							["name"]= "Executor",
-							["value"]= "```"..ExecutorUsing.."```",
-							["inline"]= true
-						},
-						{
-							["name"]= "Age",
-							["value"]= "```"..game.Players.LocalPlayer.AccountAge.."```",
-							["inline"]= true
-						},
-						{
-							["name"]= "UserID",
-							["value"]= "```"..game.Players.LocalPlayer.UserId.."```",
-							["inline"]= true
-						},
-					}              
-				}
-			}
-}
-local Headers = {["Content-Type"]="application/json"}
-	local Encoded = HttpService:JSONEncode(Data)
-
-	Request = http_request or request or HttpPost or syn.request
-	local Final = {Url = "https://discord.com/api/webhooks/975421114077564998/zmV4UOv_ItzZT5UXrXFt4GQsJED7bK-a6q9tHis3LbRqn-9WA_EvJlNqHfR6Ei13cBvZ", Body = Encoded, Method = "POST", Headers = Headers}
-	Request(Final)
 
 loadstring(game:HttpGet("https://pastebin.com/raw/5A8jtwjL", true))()
