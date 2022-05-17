@@ -2916,7 +2916,7 @@
         
         
         AddCommand(function(Arguments)
-            notif("Loaded","/e aim playername to start\n/e stop to stop duh",5,nil)
+            notif("Loaded","`aim playername to start\n`stop to stop duh",5,nil)
             local following = false
             function psearch(arg)
                 for i,v in pairs(game.Players:GetPlayers()) do 
@@ -2927,10 +2927,10 @@
             end
             
             game.Players.LocalPlayer.Chatted:Connect(function(msg)
-                if string.lower(msg) == "/e stop" then 
+                if string.lower(msg) == "`stop" then 
                     following = false
                 else
-                    if msg:sub(1,5) == "/e aim " then 
+                    if msg:sub(1,5) == "`aim " then 
                         local target = psearch(msg:sub(6))
                         if target then 
                             following = true
